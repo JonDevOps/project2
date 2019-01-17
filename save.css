@@ -1,0 +1,28 @@
+.d1 {
+    text-align:center;
+    background-color: aqua;
+    width: auto;
+    height: 75px;
+}
+.d2 {
+    text-align:center;
+    background-color: green;
+    height: 400px;
+    width: 1000px;
+    float: right;
+}
+.d3 {
+    text-align:center;
+    background-color: black;
+    height: 400px;
+}
+.d4 {
+    text-align:center;
+    background-color: orange;
+    height: 75px;
+}
+.d5 {
+    text-align:center;
+    background-color: red;
+    height: 150px;
+}

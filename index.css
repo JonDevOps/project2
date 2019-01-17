@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box; /*the box sizing property defines how the user agent(browser) should calculate the total height of an element*/ /*The width and height properties include the content, padding, and border, but do not include the margin. Note that padding and border will be inside of the box. For example, .box {width: 350px; border: 10px solid black;} renders a box that is 350px wide. The content box can't be negative and is floored to 0, making it impossible to use border-box to make the element disappear.*/
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+                /* step 1 columns: width & row: height*/   /*step 2 we add the grid value to the display property to turn the body into a grid, by default nothing happens so we must add the grid-template-columns property and the grid-template-rows property in order to cnfigure our columns and rows sizes*/
+    display: grid;
+                /*step 3 we add this so we can change the grid because is doesn't change by default we add 30% for the sidebar and 70% or auto for the main bar*/
+    grid-template-columns: 30% auto;
+             /* step 4 60px height for the header auto height for the sidebar and 60px height for the footer*/
+    grid-template-rows:  60px auto 60px;
+                      /*in order for the site not to be broken because the above 2 grid properties...basically what happens is that it fills our 4 elements "header", "main", "aside", and "footer" into the cells we created. And we created 6 cells because we have 2 columns and 3 rows. And it starts occupying/populatng these cells */ /*to override the cell occupation/population mentioned in the comment above we can give each of our cells a name for example we can call our header hd or header or whatever you like. */ /*so we write the cell name (again you can name your cells whatever you like) make sure you seperate  it with a white space from the next cells name*/ /*the first string refers to the first row the first and the first value in the string refers to the first column in that row*/
+    
+              /*step 5 this is where we give each cell a name and create  so called areas. we know the first 2 cells in the top most row should be in the header so we call them hd/header/whatever-you -like */ /*step 6 the first string refers to the first row and the first hd value below refers to the first column in that row(also called the first cell in that row) and the second column in that first row*/
+    grid-template-areas: "hd hd"
+             /*step 7 we have 3 rows so we will add each row in a different string*/ /*remember footer and hd have 2 cells named because they are in 2 cells*/
+                        "sidebar main"
+                        "footer footer"
+                        ;
+}
+
+header,
+aside,
+main,
+footer {
+    
+    text-align: center;
+
+}
+header {
+    background: #521751;
+    /*step 8 now that we have given our cells names, we can now assign them.*/
+    /*add a name that we have defined in grids template areas below in the grid area property*/
+    grid-area: hd; /*now that we have added that i will make sure the header goes into both these cells so that it spans both cells*/
+}
+
+aside {
+    background: #fa923f;
+    grid-area: sidebar;
+}
+
+main {
+ grid-area: main;
+}
+
+footer {
+    background: black;
+    grid-area: footer;
+}
+.navigation-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+                /*9.This adds flexbox to your navigation-list class. We are adding flex to this class because it contains a ul with 3 vertical li's that we want to turn into horizontal row.*/
+                    /*As soon as we put this in the vertical list turn into a horizontal list*/  /*also this is going to effect both the header and the footer because they both have the navigation list class*/
+    display: flex;
+                /**the above property display: flex has a default disposition of row. That is why the li's mentioned in the comments above defaulted into a row**/
+                /*this changes them into a row*/
+    flex-direction: row;
+    /*this centers the content horizontally*/
+    justify-content: center;
+    /*this centers the content vertically*/
+    align-items: center;
+    /*for the align-items property to work and center content vertically you must add a heiht of 100% to the nav list so that it takes the full avaliable space that the header will give it*/
+    height: 100%;
+}
+    /*the li's are sitting a bit close together hmm?*/
+    /*to change how close they are to each other you could use a simple margin on the navigation items
+    or we could give the flex container a width, center the container, and use a value like space-between for justify content */
+
+    /*but we are just going to  navigation item and give it a margin of 0 top and bottom but 10px left and right*/
+    .navigation-item {
+    margin: 0 10px;
+}
+
+.navigation-item  a {
+    text-decoration: none;
+    color: white;
+
+}
+
+.navigation-item a:hover,
+.navigation-item a:active {
+    color: #fa923f
+}
